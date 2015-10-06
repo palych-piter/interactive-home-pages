@@ -8,3 +8,4 @@ dependency-reduced-pom.xml
 buildNumber.properties
 ./idea/workspace.xml
 ./idea/deployment.xml
+./idea/libraries
