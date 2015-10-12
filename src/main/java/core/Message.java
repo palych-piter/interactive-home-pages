@@ -4,6 +4,13 @@ package core;
  * Created by Andrey on 10/6/2015.
  * Message on the board
  */
+
+// Hibernate annotations
+
+import org.hibernate.annotations.Entity;
+
+@Entity
+//@Table
 public class Message {
 
     //ID of a message
@@ -15,7 +22,6 @@ public class Message {
     //Date and time of a message
 
     public static void main(String[] args) {
-
     }
 
     public void AddMessage() {
