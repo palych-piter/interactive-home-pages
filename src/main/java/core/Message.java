@@ -1,8 +1,7 @@
 package core;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Created by Andrey on 10/6/2015.
@@ -16,15 +15,22 @@ import javax.persistence.Table;
 public class Message {
 
     //ID of a message
-    @Column
+    @Id
+    @GeneratedValue
     int id;
+    //Timestamp of the message
+    @Column
+    Date timestamp;
     //Author of a message
     @Column
     String author;
     //content of a message
     @Column
     String content;
-    //Date and time of a message
+    //link to a picture
+    @Column
+    String picture_link;
+
 
     public static void main(String[] args) {
     }
