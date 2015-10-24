@@ -4,26 +4,35 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- * Created by Andrey on 10/6/2015.
- * Message on the board
+ * Implementing the Message class, the class contains
+ * messages which have been added by users, including
+ * a guest user
+ *
  */
 
 // Hibernate annotations
 
 @Entity
-@Table(name = "Message")
+// You need to ESCAPE every field/table name that has
+// capital letters using \""
+
+@Table(name = "\"Message\"")
 public class Message {
 
     //ID of a message
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
+
     //Timestamp of the message
     @Column
     Date timestamp;
+
     //Author of a message
-    @Column
-    String author;
+    @ManyToOne(cascade = {CascadeType.REFRESH}, fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_pkey")
+    User user;
+
     //content of a message
     @Column
     String content;
@@ -38,17 +47,11 @@ public class Message {
     public void AddMessage() {
     }
 
-    ;
-
     public void EditMessage() {
     }
 
-    ;
-
     public void RemoveMessage() {
     }
-
-    ;
 
     public void AttachPicture() {
     }

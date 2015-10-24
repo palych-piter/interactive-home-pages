@@ -1,15 +1,15 @@
 package core;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
- * Created by Andrey on 10/6/2015.
+ * Implementing the User class, the class contains
+ * users which are allowed to leave messages, including
+ * a guest user
  */
 
 @Entity
-@Table(name = "User")
+@Table(name = "\"User\"")
 public class User {
 
     @Column
@@ -18,6 +18,10 @@ public class User {
     public String email;
     @Column
     public String status;
+    //ID of a user
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    int id;
 
     public static void main(String[] args) {
 

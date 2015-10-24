@@ -22,11 +22,21 @@
         <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">true</property>
 
-        <!-- Update the database schema on startup -->
+        <!--
+        "Update" : Update the database schema for tables specified in code
+         on startup, meaning new changes
+         will be applied and old structure will be in place even if
+         some column have been deleted
+
+         "Create" : Create the database schema for tables specified in code
+         from scratch every time on startup
+         -->
+
         <property name="hbm2ddl.auto">create</property>
 
         <!--<mapping resource="hibernate.xml"/>-->
         <mapping class="core.Message"/>
+        <mapping class="core.User"/>
 
 
     </session-factory>
