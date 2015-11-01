@@ -3,6 +3,7 @@ package core;
 import javax.persistence.*;
 import java.util.Date;
 
+
 /**
  * Implementing the Message class, the class contains
  * messages which have been added by users, including
