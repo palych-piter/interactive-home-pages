@@ -1,14 +1,16 @@
 package hibernate;
 
+import core.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.junit.Assert;
 import org.junit.Test;
-//import util.HibernateUtil;
+
 
 /**
  * Created by Andrey on 10/18/2015.
  */
-public class HibernateForApp {
+public class HibernateTest extends Assert {
     @Test
     public void UserHibernate() {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();

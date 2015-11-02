@@ -1,5 +1,6 @@
 package dao;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.sql.*;
@@ -7,7 +8,7 @@ import java.sql.*;
 /**
  * Created by Andrey on 10/8/2015.
  */
-public class JDBCConnect {
+public class JDBCConnectionTest extends Assert {
 
     @Test
     public void testConnection() throws SQLException {
