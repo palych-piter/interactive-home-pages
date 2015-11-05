@@ -37,7 +37,7 @@ public class JDBCConnectionTest extends Assert {
         //INSERT TEST User records
         stmt.executeUpdate("INSERT INTO \"User\" " +
                 "(id, email, name, status)" +
-                "VALUES (1, 'andr.bespalov@gmail.com', 'Andrey', 'active')");
+                "VALUES (1, 'abespalov@gmail.com', 'Andrey', 'active')");
 
         stmt.executeUpdate("INSERT INTO \"User\" " +
                 "(id, email, name, status)" +
@@ -47,7 +47,7 @@ public class JDBCConnectionTest extends Assert {
         stmt.executeUpdate
                 ("INSERT INTO \"Message\" " +
                         "(id, content, picture_link, \"timestamp\", user_pkey) " +
-                        "VALUES (1, 'content of the message2', 'link1', '2015-10-23', 1)");
+                        "VALUES (1, 'content of the message1', 'link1', '2015-10-23', 1)");
 
 
         //INSERT TEST Message records

@@ -32,7 +32,7 @@
          from scratch every time on startup
          -->
 
-        <property name="hbm2ddl.auto">update</property>
+        <property name="hbm2ddl.auto">create</property>
 
         <!--<mapping resource="hibernate.xml"/>-->
         <mapping class="core.Message"/>
