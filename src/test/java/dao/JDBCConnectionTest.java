@@ -22,10 +22,6 @@ public class JDBCConnectionTest extends Assert {
 
         Statement stmt = conn.createStatement();
 
-        //update records
-        /* stmt.executeUpdate("UPDATE \"message\" " +
-                "SET Author = 'No Available' WHERE Author = 'Masha'"); */
-
 
         //DELETE from User and Message Tables
         stmt.executeUpdate("DELETE FROM \"Message\" WHERE id = 1");
