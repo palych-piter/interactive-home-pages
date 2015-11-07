@@ -1,10 +1,11 @@
 <%@ page import="core.HibernateUtil" %>
 <%@ page import="core.Message" %>
+<%@ page import="html.MessageTableGen" %>
 <%@ page import="org.hibernate.SQLQuery" %>
 <%@ page import="org.hibernate.Session" %>
 <%@ page import="org.hibernate.SessionFactory" %>
-<%@ page import="java.util.Iterator" %>
 <%@ page import="java.util.List" %>
+
 
 <%--
   Created by IntelliJ IDEA.
@@ -29,29 +30,18 @@
     //Session connection_session = sessionFactory.getCurrentSession();
 
     // Get All Messages
-
-
     SQLQuery query = connection_session.createSQLQuery
             ("SELECT id, content, picture_link, \"timestamp\", user_pkey\n" +
                     "FROM \"Message\";");
     query.addEntity(Message.class);
-    List<Object[]> rows = query.list();
+    List messages = query.list();
+
+    MessageTableGen tableHTML = new MessageTableGen();
+    tableHTML.printMessageTable(messages, out);
 
 %>
-
-<% for (Iterator iterator =
-        Message.iterator(); iterator.hasNext(); ) {
-    Message msg = (Message) iterator.next();
-    System.out.print("First Name: " + Message.getFirstName());
-    System.out.print("  Last Name: " + Message.getLastName());
-    System.out.println("  Salary: " + Message.getSalary());
-}
-    tx.commit();
-%>
-
 
 <% connection_session.close(); %>
-
 
 </body>
 </html>

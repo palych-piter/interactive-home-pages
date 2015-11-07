@@ -23,40 +23,43 @@ public class Message {
     //ID of a message
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+    private int id;
 
     //Timestamp of the message
     @Column
-    Date timestamp;
+    private Date timestamp;
 
     //Author of a message
     @ManyToOne(cascade = {CascadeType.REFRESH}, fetch = FetchType.LAZY)
     @JoinColumn(name = "user_pkey")
-    User user;
+    private User user;
 
     //content of a message
     @Column
-    String content;
+    private String content;
     //link to a picture
     @Column
-    String picture_link;
+    private String picture_link;
 
-
-    public static void main(String[] args) {
+    public String getContent() {
+        return content;
     }
 
-    public void AddMessage() {
+    public void setContent(String newContent) {
+        content = newContent;
     }
 
-    public void EditMessage() {
+    public Date getDate() {
+        return timestamp;
     }
 
-    public void RemoveMessage() {
+    public void setDate(Date newDate) {
+        timestamp = newDate;
     }
 
-    public void AttachPicture() {
+    public String getPicture_Link() {
+        return picture_link;
     }
-
 }
 
 
