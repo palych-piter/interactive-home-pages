@@ -1,24 +1,25 @@
+
 package core;
 
 import javax.persistence.*;
 import java.util.Date;
 
-
 /**
- * Implementing the Message class, the class contains
- * messages which have been added by users, including
- * a guest user
- *
- */
+ * Implementing the Message view class, the class contains
+ * message list representation including all fields existed in
+ * a message table plus a user field from a joined User table
+ **/
 
 // Hibernate annotations
-
 @Entity
 // You need to ESCAPE every field/table name that has
 // capital letters using \""
 
-@Table(name = "\"Message\"")
-public class Message {
+@NamedNativeQuery(name = "viewMessages",
+        query = "select * from vMessageList order by TIMESTAMP",
+        resultClass = vMessageList.class)
+
+public class vMessageList implements java.io.Serializable {
 
     //ID of a message
     @Id
@@ -30,13 +31,12 @@ public class Message {
     private Date timestamp;
 
     //Author of a message
-    @ManyToOne(cascade = {CascadeType.REFRESH}, fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_pkey")
-    private User user;
+    private String user;
 
     //content of a message
     @Column
     private String content;
+
     //link to a picture
     @Column
     private String picture_link;
@@ -69,7 +69,7 @@ public class Message {
         return id;
     }
 
-    public User getuser() {
+    public String getuser() {
         return user;
     }
 

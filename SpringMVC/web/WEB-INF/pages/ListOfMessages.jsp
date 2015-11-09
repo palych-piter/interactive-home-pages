@@ -1,11 +1,10 @@
 <%@ page import="core.HibernateUtil" %>
-<%@ page import="core.Message" %>
+<%@ page import="core.vMessageList" %>
 <%@ page import="html.MessageTableGen" %>
 <%@ page import="org.hibernate.SQLQuery" %>
 <%@ page import="org.hibernate.Session" %>
 <%@ page import="org.hibernate.SessionFactory" %>
 <%@ page import="java.util.List" %>
-
 
 <%--
   Created by IntelliJ IDEA.
@@ -23,17 +22,24 @@
 <body>
 <h1>${message}</h1>
 
+<form method="post">
+    <input name="user" type="text"/> <br>
+    <input name="message" type="text"/> <br>
+    <input type="submit"/>
+</form>
+
 <%
     // Prep work
     SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
     Session connection_session = sessionFactory.openSession();
     //Session connection_session = sessionFactory.getCurrentSession();
 
+
     // Get All Messages
     SQLQuery query = connection_session.createSQLQuery
-            ("SELECT id, content, picture_link, \"timestamp\", user_pkey\n" +
-                    "FROM \"Message\";");
-    query.addEntity(Message.class);
+            ("SELECT id, content, picture_link, \"timestamp\", \"user\"\n" +
+                    "FROM vMessageList;");
+    query.addEntity(vMessageList.class);
     List messages = query.list();
 
     MessageTableGen tableHTML = new MessageTableGen();

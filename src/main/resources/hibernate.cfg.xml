@@ -35,8 +35,14 @@
         <property name="hbm2ddl.auto">validate</property>
 
         <!--<mapping resource="hibernate.xml"/>-->
+
+        <!-- classes which represents native classes
+        which reflects database table structure -->
         <mapping class="core.Message"/>
         <mapping class="core.User"/>
+
+        <!-- Classes which represents views -->
+        <mapping class="core.vMessageList"/>
 
 
     </session-factory>
