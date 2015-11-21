@@ -53,7 +53,7 @@ public class Message {
         return timestamp;
     }
 
-    public void setDate(Date newDate) {
+    public void setTimestamp(Date newDate) {
         timestamp = newDate;
     }
 
@@ -71,6 +71,11 @@ public class Message {
 
     public User getuser() {
         return user;
+    }
+
+    public void setUser(User newUser) {
+        user = newUser;
+
     }
 
 }

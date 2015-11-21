@@ -23,8 +23,11 @@
 <h1>${message}</h1>
 
 <form method="post">
-    <input name="user" type="text"/> <br>
-    <input name="message" type="text"/> <br>
+    <input name="id" value="id" type="text"/><br>
+    <input name="timestamp" value="timestamp " type="text"/><br>
+    <input name="content" value="content" type="text"/><br>
+    <input name="picture_link" value="picture_link" type="text"/><br>
+    <input name="user" value="user" type="text"/>
     <input type="submit"/>
 </form>
 
