@@ -1,0 +1,67 @@
+
+apply plugin: 'java'
+apply plugin: 'war'
+
+group = 'PalychProjects'
+version = '1.0-SNAPSHOT'
+
+description = """"""
+
+def apps_folder = "C:\\apache-tomcat-8.0.9\\webapps"
+
+
+war {
+      destinationDir = file("$buildDir/dist")
+      baseName = 'palych-pages'
+      version = '0.0.1-SNAPSHOT-' + System.currentTimeMillis();
+    }
+
+
+sourceCompatibility = 1.5
+targetCompatibility = 1.5
+                                
+
+repositories {
+        
+     maven { url "http://repo.maven.apache.org/maven2" }
+}
+
+
+dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version:'4.2.1.RELEASE'
+    compile group: 'org.springframework', name: 'spring-web', version:'4.2.1.RELEASE'
+    compile group: 'javax.servlet', name: 'servlet-api', version:'2.5'
+    compile group: 'org.springframework', name: 'spring-webmvc', version:'4.2.1.RELEASE'
+    compile group: 'org.springframework', name: 'spring-expression', version:'4.2.1.RELEASE'
+    compile group: 'org.springframework', name: 'spring-tx', version:'4.2.1.RELEASE'
+    compile group: 'org.eclipse.persistence', name: 'javax.persistence', version:'2.1.0'
+    compile group: 'junit', name: 'junit', version:'4.12'
+    compile group: 'org.hibernate', name: 'hibernate-core', version:'5.0.2.Final'
+    compile group: 'org.hibernate', name: 'hibernate-entitymanager', version:'5.0.2.Final'
+    compile group: 'org.hibernate', name: 'hibernate-validator', version:'5.2.2.Final'
+    compile group: 'org.hibernate', name: 'hibernate-tools', version:'4.3.1.Final'
+    compile group: 'org.hibernate.javax.persistence', name: 'hibernate-jpa-2.1-api', version:'1.0.0.Final'
+    compile group: 'org.postgresql', name: 'postgresql', version:'9.4-1203-jdbc42'
+    compile group: 'org.jboss.logging', name: 'jboss-logging', version:'3.3.0.Final'
+    compile group: 'javax.transaction', name: 'jta', version:'1.1'
+    compile group: 'dom4j', name: 'dom4j', version:'1.6.1'
+    compile group: 'javassist', name: 'javassist', version:'3.12.0.GA'
+    testCompile group: 'org.springframework', name: 'spring-test', version:'4.2.1.RELEASE'
+    compile(group: 'javax.servlet.jsp', name: 'jsp-api', version:'2.1') {
+       /* This dependency was originally in the Maven provided scope, but the project was not of type war.
+       This behavior is not yet supported by Gradle, so this dependency has been converted to a compile dependency.
+       Please review and delete this closure when resolved. */
+    }
+}
+
+
+task copy(type: Copy) {
+    description 'Copies the built war file to the webapps Tomcat directory.'
+    from "$buildDir/dist"
+    into apps_folder
+    include '**/*.war'
+    rename 'palych(.*)', 'palych-pages.war'
+}
+
+
+copy.dependsOn war
