@@ -26,8 +26,7 @@ public class UserServiceImpl implements UserService
 
     @Override
     @Transactional
-    public void addUser(User p) {
-        this.userDAO.addUser(p);
+    public void addUser(User p) { this.userDAO.addUser(p);
     }
 
     @Override

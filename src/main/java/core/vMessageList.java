@@ -6,7 +6,7 @@ import java.util.Date;
 
 /**
  * Implementing the Message view class, the class contains
- * message list representation including all fields existed in
+ * a message list representation including all fields existed in
  * a message table plus a user field from a joined User table
  **/
 

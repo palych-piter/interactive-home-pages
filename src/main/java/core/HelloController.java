@@ -1,12 +1,19 @@
 
 package core;
 
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import service.MessageService;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 @Controller
 @RequestMapping("/")
@@ -14,6 +21,16 @@ public class HelloController {
 
 
     private MessageService messageService;
+
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+       // binder.registerCustomEditor(Message.class, new MessageUserEditor());
+    }
+
+
 
     @RequestMapping(method = RequestMethod.GET)
     public String printWelcome(ModelMap model) {
@@ -69,3 +86,4 @@ public class HelloController {
         return "ListOfMessages";
     }
 }
+

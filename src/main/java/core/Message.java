@@ -30,9 +30,10 @@ public class Message {
     private Date timestamp;
 
     //Author of a message
-    @ManyToOne(cascade = {CascadeType.REFRESH}, fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_pkey")
-    private User user;
+//    @ManyToOne(cascade = {CascadeType.REFRESH}, fetch = FetchType.LAZY)
+//    @JoinColumn(name = "user_pkey")
+    @Column
+    private String user;
 
     //content of a message
     @Column
@@ -65,18 +66,28 @@ public class Message {
         picture_link = newPictureLink;
     }
 
+
+    public String getuser() {
+        return user;
+    }
+
+    public void setuser(String newUser) {
+        content = newUser;
+    }
+
+
     public Integer getid() {
         return id;
     }
 
-    public User getuser() {
-        return user;
-    }
-
-    public void setUser(User newUser) {
-        user = newUser;
-
-    }
+//    public User getuser() {
+//        return user;
+//    }
+//
+//    public void setUser(String newUser) {
+//        user.name = newUser;
+//
+//    }
 
 }
 

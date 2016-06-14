@@ -13,7 +13,7 @@ import java.util.List;
 @Repository
 public class UserDAOImpl implements UserDAO {
 
-    private static final Logger logger = LoggerFactory.getLogger(MessageDAOImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(UserDAOImpl.class);
 
     private SessionFactory sessionFactory;
 
@@ -53,7 +53,7 @@ public class UserDAOImpl implements UserDAO {
     public User getUserById(int id) {
         Session session = this.sessionFactory.getCurrentSession();
         User p = (User) session.load(User.class, new Integer(id));
-        logger.info("Message loaded successfully, Message details= " + p);
+        logger.info("User loaded successfully, User details= " + p);
         return p;
     }
 
@@ -66,7 +66,6 @@ public class UserDAOImpl implements UserDAO {
         }
         logger.info("User deleted successfully, user details= " + p);
     }
-
 }
 
 

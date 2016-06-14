@@ -36,4 +36,9 @@ public class User {
     public void RemoveUser() {
     }
 
+    public String getname() {
+        return name;
+    }
+
+
 }

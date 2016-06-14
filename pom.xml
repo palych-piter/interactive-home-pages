@@ -73,13 +73,21 @@
             <version>${spring.version}</version>
         </dependency>
 
+        <!-- Spring transactions -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+
         <!--<dependency>
             <groupId>javax.persistence</groupId>
             <artifactId>persistence-api</artifactId>
             <version>1.0.2</version>
         </dependency>-->
 
-        <!-- Commented to resolve Foreing Key error, according to the
+        <!-- Commented to resolve foreing Key error, according to the
         http://stackoverflow.com/questions/21523445/maven-dependencies-regarding-javax-persistence-jar
         AND http://stackoverflow.com/questions/24588860/error-javax-persistence-joincolumn-foreignkeyljavax-persistence-foreignkey-wi
         -->
@@ -133,8 +141,9 @@
             <version>9.4-1203-jdbc42</version>
         </dependency>
 
-        //The libraries were added after exceptions occured while
-        //executing JPS files
+        <!--The libraries were added after
+        exceptions occurred while executing
+        JPS files -->
         <dependency>
             <groupId>org.jboss.logging</groupId>
             <artifactId>jboss-logging</artifactId>
@@ -158,7 +167,15 @@
 
     </dependencies>
 
+    <distributionManagement>
+    <!-- use the following if you're not using a snapshot version. -->
+        <repository>
+            <id>InteractivePagesRepo</id>
+            <name>TomCat Web Application Repository</name>
+            <!-- <url>C:\apache-tomcat-8.0.9\webapps</url> -->
+            <url>http://localhost:8080</url>
+        </repository>
+    </distributionManagement>
 
-</dependencies>
 
 </project>

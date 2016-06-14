@@ -26,8 +26,6 @@ public class MessageDAOImpl implements MessageDAO {
     @Override
     public void addMessage(Message p) {
         Session session = this.sessionFactory.getCurrentSession();
-
-        //System.out.printf("Executing addMessage service method!!!");
         session.persist(p);
         logger.info("Message saved successfully, Message Details= " + p);
     }

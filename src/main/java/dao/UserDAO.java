@@ -15,9 +15,9 @@ public interface UserDAO {
 
     public void updateUser(User p);
 
-    public List<Message> listUsers();
+    public List<User> listUsers();
 
-    public Message getUserById(int id);
+    public User getUserById(int id);
 
     public void removeUser(int id);
 }
